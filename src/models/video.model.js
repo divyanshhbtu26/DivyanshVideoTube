@@ -42,6 +42,9 @@ const videoSchema =new Schema(
     }
 )
 
+//Using Plugin so as to make it easier to manage and display large sets of video data effectively :---
+//  via using npm i mongoose-aggregate-paginate-v2 :---
 videoSchema.plugin(mongooseAggregatePaginate)
+
 
 export const Video=mongoose.model("Video",videoSchema)

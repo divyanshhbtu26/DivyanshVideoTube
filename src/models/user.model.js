@@ -51,6 +51,7 @@ const userSchema=new Schema(
     }
 )
 
+//BCRYPT gives many hooks functionality to use in our code , and these hooks are used via different forms like here we are using bcrypt.hash(this.password,10),, here 10 signifies the nuber of rounds:--- 
 //HOOK creation
 userSchema.pre("save", async function (next) {
     if(!this.isModified("password")) return next();
@@ -59,6 +60,7 @@ userSchema.pre("save", async function (next) {
 })
 
 //METHOD creation
+// Done to check whether the provided password matches the hashed password in the database
 userSchema.methods.isPasswordCorrect = async function (password){
     return await bcrypt.compare(password, this.password)  // return TRUE or FALSE
 }
